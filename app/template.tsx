@@ -19,7 +19,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
                 ease: "anticipate",
                 duration: 0.4
             }}
-            className="flex flex-col items-center justify-center"
+            className="flex flex-col items-center justify-center px-[10%] py-4"
         >
             {children}
         </motion.div>
