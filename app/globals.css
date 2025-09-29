@@ -4,10 +4,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --element-background: rgba(44, 44, 44, 0.33);
   --primary: #0072F5;
   --secondary: rgba(0, 0, 0, 0.1);
   --text: #EDEDED;
-  --text-secondary: #9C9C9C;
+  --text-secondary: #4a5565;
   --border: #5c5c5c;
 }
 
@@ -19,6 +20,7 @@
   --color-text-secondary: var(--text-secondary);
   --color-primary: var(--primary);
   --color-border: var(--border);
+  --color-element-background: var(--element-background);
 }
 
 @media (prefers-color-scheme: dark) {
