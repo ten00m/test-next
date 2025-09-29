@@ -1,10 +1,17 @@
-import { useState, useCallback } from 'react';
+import {  useCallback } from 'react';
 import {baseApiUrl} from "@/src/shared/lib/constants";
 
 
 export function useApi() {
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+    let loading = false;
+    let error: string | null = null;
+
+    const setLoading = (value: boolean) => {
+        loading = value;
+    }
+    const setError = (value: string | null) => {
+        error = value;
+    }
 
     const request = useCallback(async <T>(
         url: string,
