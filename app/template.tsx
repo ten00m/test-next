@@ -19,6 +19,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
                 ease: "anticipate",
                 duration: 0.4
             }}
+            className="flex flex-col items-center justify-center"
         >
             {children}
         </motion.div>
