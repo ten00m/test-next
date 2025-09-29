@@ -8,6 +8,7 @@
   --secondary: rgba(0, 0, 0, 0.1);
   --text: #EDEDED;
   --text-secondary: #9C9C9C;
+  --border: #5c5c5c;
 }
 
 @theme inline {
@@ -17,6 +18,7 @@
   --color-text: var(--text);
   --color-text-secondary: var(--text-secondary);
   --color-primary: var(--primary);
+  --color-border: var(--border);
 }
 
 @media (prefers-color-scheme: dark) {
