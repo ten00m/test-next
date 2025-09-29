@@ -1,0 +1,1 @@
+export {FileInput as defautl} from './FileInput'
