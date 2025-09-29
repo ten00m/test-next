@@ -1,7 +1,6 @@
-import { useCallback } from 'react'
 import { baseApiUrl } from '@/src/shared/lib/constants'
 
-export function useApi() {
+export function createApi() {
     let loading = false
     let error: string | null = null
 
@@ -12,10 +11,7 @@ export function useApi() {
         error = value
     }
 
-    const request = useCallback(async <T>(url: string, options: RequestInit = {}): Promise<T> => {
-        setLoading(true)
-        setError(null)
-
+    const request = async <T>(url: string, options: RequestInit = {}): Promise<T> => {
         try {
             const baseURL = baseApiUrl || '/api'
             const fullUrl = url.startsWith('http') ? url : `${baseURL}${url}`
@@ -41,43 +37,31 @@ export function useApi() {
         } finally {
             setLoading(false)
         }
-    }, [])
+    }
 
-    const get = useCallback(
-        <T>(url: string) => {
-            return request<T>(url, { method: 'GET' })
-        },
-        [request],
-    )
+    const get = <T>(url: string) => {
+        return request<T>(url, { method: 'GET' })
+    }
 
-    const post = useCallback(
-        <T>(url: string, data?: unknown) => {
-            return request<T>(url, {
-                method: 'POST',
-                body: data ? JSON.stringify(data) : undefined,
-            })
-        },
-        [request],
-    )
+    const post = <T>(url: string, data?: unknown) => {
+        return request<T>(url, {
+            method: 'POST',
+            body: data ? JSON.stringify(data) : undefined,
+        })
+    }
 
-    const put = useCallback(
-        <T>(url: string, data?: unknown) => {
-            return request<T>(url, {
-                method: 'PUT',
-                body: data ? JSON.stringify(data) : undefined,
-            })
-        },
-        [request],
-    )
+    const put = <T>(url: string, data?: unknown) => {
+        return request<T>(url, {
+            method: 'PUT',
+            body: data ? JSON.stringify(data) : undefined,
+        })
+    }
 
-    const del = useCallback(
-        <T>(url: string) => {
-            return request<T>(url, { method: 'DELETE' })
-        },
-        [request],
-    )
+    const del = <T>(url: string) => {
+        return request<T>(url, { method: 'DELETE' })
+    }
 
-    const clearError = useCallback(() => setError(null), [])
+    const clearError = () => setError(null)
 
     return {
         loading,
