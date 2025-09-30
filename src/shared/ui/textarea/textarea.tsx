@@ -1,13 +1,14 @@
-import { FC, InputHTMLAttributes } from 'react'
+import { FC, TextareaHTMLAttributes } from 'react'
 import { v4 as uuid } from 'uuid'
 
-interface TextareaProps extends InputHTMLAttributes<HTMLInputElement> {
+interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     label?: string,
     labelClass?: string,
 }
 
 export const Textarea: FC<TextareaProps> = ({ label, className = '', labelClass = 'bg-background', ...props }) => {
     const id = uuid()
+
     return (
         <div className="flex flex-col gap-1 relative pt-2.5">
             {label && (
@@ -20,8 +21,8 @@ export const Textarea: FC<TextareaProps> = ({ label, className = '', labelClass 
             )}
             <textarea
                 id={id}
-                className="px-3 py-2 border-2 border-border rounded-lg focus:border-primary min-h-[100px] resize-vertical"
                 {...props}
+                className="px-3 py-2 border-2 border-border rounded-lg focus:border-primary min-h-[100px] resize-vertical"
             ></textarea>
         </div>
     )
