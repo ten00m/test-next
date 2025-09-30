@@ -4,7 +4,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --element-background: rgba(44, 44, 44, 0.33);
+  --element-background: rgb(44, 44, 44);
   --primary: #0072F5;
   --secondary: rgba(0, 0, 0, 0.1);
   --text: #EDEDED;

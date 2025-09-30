@@ -2,16 +2,17 @@ import { FC, InputHTMLAttributes } from 'react'
 import { v4 as uuid } from 'uuid'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-    label?: string
+    label?: string,
+    labelClass?: string,
 }
 
-export const Input: FC<InputProps> = ({ label, className = '', ...props }) => {
+export const Input: FC<InputProps> = ({ label, className = '', labelClass = 'bg-background', ...props }) => {
     const id = uuid()
     return (
         <div className="flex flex-col gap-1 relative pt-2.5">
             {label && (
                 <label
-                    className="absolute h-5 px-0.5 text-center text-5 text-sm font-medium text-text-secondary bg-background top-0 left-2.5"
+                    className={`absolute h-5 px-0.5 text-center text-5 text-sm font-medium text-text-secondary top-0 left-2.5 ${labelClass}`}
                     htmlFor={id}
                 >
                     {label}
