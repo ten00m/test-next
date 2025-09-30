@@ -5,15 +5,11 @@ export default async function SSRPage() {
 
     return (
         <div>
-            <h1 className="text-3xl font-bold mb-6">SSR Страница</h1>
-            <p className="text-text-secondary mb-6">
-                Данные загружаются на сервере при каждом запросе.
-            </p>
+            <h1 className="text-3xl font-bold mb-6">Посты (ssr)</h1>
             {error ? (
                 <h2 className="text-xl font-semibold">Ошибка: {error}</h2>
             ) : (
                 <div className="space-y-4">
-                    <h2 className="text-xl font-semibold">Посты:</h2>
                     {posts.slice(0, 5).map((post) => (
                         <div key={post.id} className="p-4 border rounded-lg">
                             <h3 className="font-medium">{post.title}</h3>
