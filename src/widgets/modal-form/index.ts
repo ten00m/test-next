@@ -1,1 +1,1 @@
-export { ModalForm } from './ModalForm'
+export { ModalForm as default} from './ModalForm'
