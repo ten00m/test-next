@@ -9,9 +9,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" style={{"--vsc-domain":"\"localhost\""}}>
       <body
         className={`antialiased`}
+        cz-shortcut-listen="true"
       >
         <Header />
         <main>{children}</main>
