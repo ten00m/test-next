@@ -7,23 +7,23 @@ export async function Home() {
 
     const pages = [
         {
-            href: '/posts',
-            title: 'SSR - Посты',
-            description: 'Серверный рендеринг с реальными комментариями',
-            features: [
-                'Данные обновляются при каждом запросе',
-                'Реальные комментарии с API',
-                'Интерактивные действия',
-            ],
-        },
-        {
-            href: '/ssg-page',
-            title: 'SSG - Пользователи',
-            description: 'Статическая генерация с данными пользователей',
+            href: '/',
+            title: 'Главная - SSG',
+            description: 'Статическая главная страница',
             features: [
                 'Данные загружаются при сборке',
                 'Мгновенная загрузка',
                 'Идеально для неизменных данных',
+            ],
+        },
+        {
+            href: '/posts',
+            title: 'Посты - SSR',
+            description: 'Серверный рендеринг',
+            features: [
+                'Данные обновляются при каждом запросе',
+                'Реальные комментарии с API',
+                'Интерактивные действия',
             ],
         },
         {
@@ -55,26 +55,6 @@ export async function Home() {
                     <h1 className="text-5xl font-bold text-text mb-6">Тестовое задание next js</h1>
                 </div>
 
-                <div className="p-8 mb-12">
-                    <h2 className="text-3xl font-bold text-text mb-8 text-center">
-                        Последние посты
-                    </h2>
-                    <div className="grid md:grid-cols-3 gap-6">
-                        {latestPosts.map((post) => (
-                            <div
-                                key={post.id}
-                                className="bg-[#1F1F1F] rounded-lg p-6 hover:shadow-md transition-shadow"
-                            >
-                                <h3 className="font-semibold text-lg mb-3 line-clamp-2">
-                                    {post.title}
-                                </h3>
-                                <p className="text-text-secondary text-sm line-clamp-3">
-                                    {post.body}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
                 <div className="grid lg:grid-cols-2 gap-8">
                     {pages.map((page) => (
                         <Link
@@ -110,4 +90,4 @@ export async function Home() {
     )
 }
 
-export const dynamic = 'force-dynamic'
+export const dynamic = 'force-static'
