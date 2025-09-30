@@ -1,0 +1,1 @@
+export {Albums as default} from '@/src/_pages/albums'
