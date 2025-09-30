@@ -9,7 +9,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" style={{"--vsc-domain":"\"localhost\""}}>
+    <html lang="en">
       <body
         className={`antialiased`}
         cz-shortcut-listen="true"
