@@ -7,6 +7,7 @@ import FileInput from '@/src/shared/ui/fileInput'
 import Button from '@/src/shared/ui/button'
 import { ModalFormData } from '@/src/shared/lib/types/modal'
 import { FC, ChangeEvent, FormEvent } from 'react'
+import Textarea from "@/src/shared/ui/textarea";
 
 interface ModalFormProps {
     isOpen: boolean
@@ -19,6 +20,7 @@ export const ModalForm: FC<ModalFormProps> = ({ isOpen, onClose, onSubmit, loadi
     const [formData, setFormData] = useState<ModalFormData>({
         title: '',
         file: null,
+        info: ''
     })
 
     const handleSubmit = (e: FormEvent) => {
@@ -26,20 +28,38 @@ export const ModalForm: FC<ModalFormProps> = ({ isOpen, onClose, onSubmit, loadi
         onSubmit(formData)
     }
 
+    const handleTextareaChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        const info = e.target.value;
+        setFormData(prev => {
+            return {
+                ...prev,
+                info: info
+            }
+        })
+    }
+
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target
-        setFormData((prev) => ({ ...prev, [name]: value }))
+        const { name, value } = e.target;
+        setFormData(prev => {
+            return {
+                ...prev,
+                [name]: value
+            }
+        })
     }
 
     const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0] || null
-        setFormData((prev) => ({ ...prev, file }))
+        if (file && file.type.startsWith('image/')) {
+            setFormData((prev) => ({ ...prev, file }))
+        }
     }
 
     const resetForm = () => {
         setFormData({
             title: '',
             file: null,
+            info: ''
         })
     }
 
@@ -49,22 +69,28 @@ export const ModalForm: FC<ModalFormProps> = ({ isOpen, onClose, onSubmit, loadi
     }
 
     return (
-        <Modal isOpen={isOpen} onClose={handleClose} title="Создать новый пост">
+        <Modal isOpen={isOpen} onClose={handleClose} title="Изменить данные пользователя">
             <form onSubmit={handleSubmit} className="space-y-4">
                 <Input
-                    label="Заголовок"
+                    label="Имя"
                     name="title"
                     type="text"
-                    placeholder="Введите заголовок"
+                    placeholder="Введите никнейм"
                     value={formData.title}
                     onChange={handleInputChange}
                     required
                 />
-
+                <Textarea
+                    label="Обо мне"
+                    name="info"
+                    placeholder="Расскажите о себе"
+                    value={formData.info}
+                    onChange={handleTextareaChange}
+                />
                 <FileInput
-                    label="Выберите файл"
+                    label="Аватар"
                     name="file"
-                    accept="image/*,.pdf,.doc,.docx"
+                    accept="image/"
                     onChange={handleFileChange}
                 />
 
