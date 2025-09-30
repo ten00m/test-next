@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import {useState, useEffect, FormEvent} from 'react';
 import {createPost, getPosts} from "@/src/entities/post/api/api";
 import type {Post} from '@/src/entities/post/types/types'
 import Button from '@/src/shared/ui/button'
@@ -8,6 +8,8 @@ import Input from '@/src/shared/ui/input'
 import Textarea from "@/src/shared/ui/textarea";
 import {useModalForm} from "@/src/features/modal-from";
 import ModalForm from "@/src/widgets/modal-form";
+import avatar from '@/src/shared/assets/avatar.png'
+import {ModalFormData} from "@/src/shared/lib/types/modal";
 
 
 
@@ -17,7 +19,11 @@ export function Profile() {
     const [creating, setCreating] = useState(false);
     const [newPost, setNewPost] = useState<Omit<Post, 'id' | 'userId'>>({ title: '', body: '' });
 
-    const { isModalOpen, isLoading, openModal, closeModal, handleSubmit } = useModalForm();
+    const { isModalOpen, isLoading, openModal, closeModal, handleSubmit } = useModalForm<ModalFormData>({onSubmit});
+
+    function onSubmit(data: ModalFormData): void {
+        //доделать пост запрос тут
+    }
 
     const fetchPosts = () => {
         getPosts()
@@ -92,8 +98,22 @@ export function Profile() {
                                 Обновить посты
                             </Button>
                             <Button onClick={openModal}>
-                                Открыть модалку
+                                Обновить информацию
                             </Button>
+                        </div>
+                    </div>
+
+                    <div className="flex gap-8 bg-element-background rounded-2xl shadow-xl p-8 mb-8">
+                        <div className="w-40 h-40 rounded-[50%] overflow-hidden ">
+                            <img src={avatar.src} alt=""/>
+                        </div>
+                        <div className="flex flex-col gap-8 flex-1/2">
+                            <div className="text-text">
+                                User
+                            </div>
+                            <div className="text-text-secondary">
+                                quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto
+                            </div>
                         </div>
                     </div>
 
