@@ -8,7 +8,7 @@ export async function Home() {
     const pages = [
         {
             href: '/',
-            title: 'Главная - SSG',
+            title: 'SSG = Главная',
             description: 'Статическая главная страница',
             features: [
                 'Данные загружаются при сборке',
@@ -18,7 +18,7 @@ export async function Home() {
         },
         {
             href: '/posts',
-            title: 'Посты - SSR',
+            title: ' SSR - Посты',
             description: 'Серверный рендеринг',
             features: [
                 'Данные обновляются при каждом запросе',
@@ -37,9 +37,9 @@ export async function Home() {
             ],
         },
         {
-            href: '/csr-page',
-            title: 'CSR - Создание поста',
-            description: 'Клиентский рендеринг с интерактивной формой',
+            href: '/profile',
+            title: 'CSR - Профиль',
+            description: 'Клиентский рендеринг',
             features: [
                 'Динамические взаимодействия',
                 'Создание постов в реальном времени',
@@ -60,7 +60,7 @@ export async function Home() {
                         <Link
                             key={page.href}
                             href={page.href}
-                            className="block bg-element-background rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                            className="block bg-element-background filter contrast-75 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                         >
                             <div className="p-8">
                                 <div className="flex items-start justify-between mb-4">
